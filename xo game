@@ -1,0 +1,174 @@
+package xoGame;
+import java.util.Scanner;
+public class GameMadeByMe {
+
+    public static void theTable (String str1, String str2, String str3, String str4,
+    String str5, String str6, String str7, String str8, String str9) {
+    System.out.println
+          (" " + str1 + "  | " + str2 + "  | " + str3 + "   ");
+          System.out.println("--------------");
+          System.out.println
+          (" " + str4 + "  | " + str5 + "  | " + str6 + "   ");
+          System.out.println("--------------");
+          System.out.println
+          (" " + str7 + "  | " + str8 + "  | " + str9 + "   ");
+}
+    
+    public static void main(String[] args) { //main
+        Scanner KeyedInput = new Scanner(System.in);
+//variables        
+int intUserGuess;
+int intUserStart;
+String [] strPlacing = new String [9];
+String strO = "o";
+//declare intPlacing
+strPlacing[0] = "0";
+strPlacing[1] = "1";
+strPlacing[2] = "2";
+strPlacing[3] = "3";
+strPlacing[4] = "4";
+strPlacing[5] = "5";
+strPlacing[6] = "6";
+strPlacing[7] = "7";
+strPlacing[8] = "8";
+
+//starting the game 
+ System.out.println("press 1 to start the xo game and press 2 to end it");
+ intUserStart = KeyedInput.nextInt(); //user choice
+
+if (intUserStart == 1) { //starting the game
+ System.out.println("welcome to the x and o game");
+ System.out.println("this is a 2 player game, one will be x and one will be o");
+//end of intro
+}  if (intUserStart == 2) { //ending the game
+  System.out.println("thank you for spending time vising our website");
+  System.exit(0);
+}    
+
+//table 
+if (intUserStart == 1) {
+ theTable (strPlacing[0], strPlacing[1], strPlacing[2], strPlacing[3],
+ strPlacing[4], strPlacing[5], strPlacing[6], strPlacing[7], strPlacing[8]);
+ }
+
+//putting xo
+for (int intLoop = 1; intLoop < 10; intLoop++) {
+  if (intLoop % 2 != 0) { //puting o
+  System.out.println("please enter the number of the place"
+                   + " you want to put o");
+  intUserGuess = KeyedInput.nextInt();
+ 
+  //putting variable
+  while(true) { 
+  if (strPlacing[intUserGuess] == "o" || strPlacing[intUserGuess] == "x") { //already taken
+      System.out.println("sorry, you can't put it here, please try other places");
+      intUserGuess = KeyedInput.nextInt();
+  } else { //nontaken
+      strPlacing[intUserGuess] = "o"; 
+     theTable (strPlacing[0], strPlacing[1], strPlacing[2], strPlacing[3],
+     strPlacing[4], strPlacing[5], strPlacing[6], strPlacing[7], strPlacing[8]);
+             break;
+  }
+  }
+  }
+  
+//ending placing o
+ if (intLoop % 2 == 0) { //puting x
+  System.out.println("please enter the number of the place"
+                     + "you want to put x");
+  intUserGuess = KeyedInput.nextInt();
+
+//placing x
+  while(true) {
+  if (strPlacing[intUserGuess] == "o" || strPlacing[intUserGuess] == "x") { //already taken
+      System.out.println("sorry, you can't put it here, please try other places");
+      theTable (strPlacing[0], strPlacing[1], strPlacing[2], strPlacing[3],
+     strPlacing[4], strPlacing[5], strPlacing[6], strPlacing[7], strPlacing[8]);
+      intUserGuess = KeyedInput.nextInt();
+  } else { //nontaken
+      strPlacing[intUserGuess] = "x"; 
+     theTable (strPlacing[0], strPlacing[1], strPlacing[2], strPlacing[3],
+     strPlacing[4], strPlacing[5], strPlacing[6], strPlacing[7], strPlacing[8]);
+             break;
+  }
+  }
+ } //ending placing x
+ 
+//first row horizontal win
+ if (strPlacing[0] == "o" && strPlacing[1] == "o" && strPlacing[2] == "o") {
+   System.out.println("Congratulation to user O, you are the winner !");
+   break;
+ }
+  if (strPlacing[0] == "x" && strPlacing[1] == "x" && strPlacing[2] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+//second row horinzontal win
+ if (strPlacing[3] == "o" && strPlacing[4] == "o" && strPlacing[5] == "o") {
+   System.out.println("Congratulation to user O, you are the winner !");
+   break;
+ }
+  if (strPlacing[3] == "x" && strPlacing[4] == "x" && strPlacing[5] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+//third row horinzontal win
+ if (strPlacing[6] == "o" && strPlacing[7] == "o" && strPlacing[8] == "o") {
+   System.out.println("Congratulation to user O, you are the winner !");
+   break;
+ }
+  if (strPlacing[6] == "x" && strPlacing[7] == "x" && strPlacing[8] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+
+//first row vertical win
+ if (strPlacing[0] == "o" && strPlacing[3] == "o" && strPlacing[6] == "o") {
+   System.out.println("Congratulation to user O, you are the win ");
+   break;
+ }
+  if (strPlacing[0] == "x" && strPlacing[3] == "x" && strPlacing[6] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+//second row vertical win
+ if (strPlacing[1] == "o" && strPlacing[4] == "o" && strPlacing[7] == "o") {
+   System.out.println("Congratulation to user O, you are the winner !");
+   break;
+ }
+  if (strPlacing[1] == "x" && strPlacing[4] == "x" && strPlacing[7] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+//third row vertical win
+ if (strPlacing[2] == "o" && strPlacing[5] == "o" && strPlacing[8] == "o") {
+   System.out.println("Congratulation to user O, you are the winner !");
+   break;
+ }
+  if (strPlacing[2] == "x" && strPlacing[5] == "x" && strPlacing[8] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+
+//first row skew win
+ if (strPlacing[0] == "o" && strPlacing[4] == "o" && strPlacing[8] == "o") {
+   System.out.println("Congratulation to user O, you are the winner");
+   break;
+ }
+  if (strPlacing[0] == "x" && strPlacing[4] == "x" && strPlacing[8] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+//second row skew win
+ if (strPlacing[2] == "o" && strPlacing[4] == "o" && strPlacing[6] == "o") {
+   System.out.println("Congratulation to user O, you are the winner !");
+   break;
+ }
+  if (strPlacing[2] == "x" && strPlacing[4] == "x" && strPlacing[6] == "x") {
+   System.out.println("Congratulation to user X, you are the winner !");
+   break;
+ }
+
+}         
+    }
+    }
